@@ -57,13 +57,13 @@ const Settings = () => {
               <div className="flex gap-4">
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1"
                 >
                   Save <SaveIcon size={16} className="inline-block" />
                 </button>
                 <button
                   type="button"
-                  className="px-4 py-2 bg-gradient-to-br from-red-500 to-red-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-red-500 flex items-center justify-center gap-1"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-red-500 flex items-center justify-center gap-1"
                 >
                   Delete <Trash2 size={16} className="inline-block" />
                 </button>

@@ -19,7 +19,7 @@ const DashboardComp = () => {
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
         <h2 className="text-3xl font-medium text-zinc-100">Dashboard</h2>
-        <div className="flex flex-col justify-start items-start w-full mt-4 p-4 rounded-lg bg-gradient-to-br from-green-600 to-green-700">
+        <div className="flex flex-col justify-start items-start w-full mt-4 p-4 rounded-lg hover:opacity-90 bg-gradient-to-br from-green-600 to-green-700">
           <h3 className="text-2xl font-medium text-zinc-100">Welcome, User!</h3>
           <p className="text-lg text-zinc-200 mt-2">
             {`Here's a quick overview of your account.`}
@@ -49,7 +49,7 @@ const DashboardComp = () => {
               placeholder="Paste your link here ....."
               className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
             />
-            <button className="px-4 py-2 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1">
+            <button className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1">
               Shorten <SendHorizontal size={16} className="inline-block" />
             </button>
           </form>

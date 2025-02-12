@@ -38,7 +38,7 @@ const LinksComp = () => {
               placeholder="Paste your link here ....."
               className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
             />
-            <button className="px-4 py-2 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1">
+            <button className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1">
               Shorten <SendHorizontal size={16} className="inline-block" />
             </button>
           </form>

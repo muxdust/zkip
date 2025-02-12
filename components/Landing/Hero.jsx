@@ -3,11 +3,11 @@ import { ArrowRight, Link } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="flex justify-center items-center min-h-screen w-full bg-gradient-to-br from-zinc-800 to-zinc-900 font-[family-name:var(--font-roboto)] relative">
+    <section className="flex justify-center items-center min-h-screen w-full hover:opacity-90 bg-gradient-to-br from-zinc-800 to-zinc-900 font-[family-name:var(--font-roboto)] relative">
       <div className="absolute h-20 w-32 bg-green-600 rounded-full flex justify-center items-center z-0 blur-[100px] top-0"></div>
       <div className="flex flex-col justify-center items-center text-center w-full max-w-2xl px-4">
         <h2 className="text-5xl md:text-6xl text-zinc-100 font-medium flex flex-col items-center justify-center md:gap-2 gap-1">
-          <span>Zkip the clutter</span>
+          <span>Zkip the Clutter</span>
           <span className="font-[family-name:var(--font-instrument-serif)] bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
             Link smarter
           </span>
@@ -15,7 +15,7 @@ const Hero = () => {
         <p className="text-lg md:text-xl text-zinc-300 mt-4">
           {`"Fast, simple, and reliable link shortening for everyone, anywhere, anytime."`}
         </p>
-        <button className="mt-6 px-5 py-2 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center">
+        <button className="mt-6 px-5 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center">
           Get Started <ArrowRight size={24} className="inline-block ml-2 p-0.5 rounded-full bg-white text-green-600" />
         </button>
         <div className="mt-8 text-zinc-300 text-sm w-full max-w-lg bg-zinc-800 rounded-lg p-1 shadow-lg border border-zinc-600">

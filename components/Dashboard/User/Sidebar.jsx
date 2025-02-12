@@ -38,9 +38,9 @@ const Sidebar = () => {
       <nav className="hidden lg:flex flex-col w-64 h-screen bg-zinc-800 p-4 sticky top-0">
         <Link
           href="/dashboard"
-          className="text-zinc-100 text-2xl font-medium mb-6"
+          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)] mb-6"
         >
-          zkip
+          Zkip
         </Link>
         <ul className="flex flex-col gap-4">
           {sidebarItems.map((item, index) => (
@@ -54,7 +54,7 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
-        <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-auto">
+        <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-auto">
           <LogOutIcon size={24} /> Logout
         </button>
       </nav>
@@ -63,9 +63,9 @@ const Sidebar = () => {
       <nav className="hidden md:flex lg:hidden flex-col w-20 h-screen bg-zinc-800 p-4 sticky top-0">
         <Link
           href="/dashboard"
-          className="text-zinc-100 text-2xl font-medium mb-6 text-center"
+          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)] mb-6 text-center"
         >
-          Z
+          Zkip
         </Link>
         <ul className="flex flex-col gap-4">
           {sidebarItems.map((item, index) => (
@@ -79,7 +79,7 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
-        <button className="h-12 w-12 flex justify-center items-center mt-auto p-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out">
+        <button className="h-12 w-12 flex justify-center items-center mt-auto p-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out">
           <LogOutIcon size={24} />
         </button>
       </nav>
@@ -89,9 +89,9 @@ const Sidebar = () => {
         <div className="flex justify-between items-center">
           <Link
             href="/dashboard"
-            className="text-zinc-100 text-2xl font-medium"
+            className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)]"
           >
-            zkip
+            Zkip
           </Link>
           <button
             onClick={toggleSidebar}
@@ -116,7 +116,7 @@ const Sidebar = () => {
                 </li>
               ))}
             </ul>
-            <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-4">
+            <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-4">
               <LogOutIcon size={24} /> Logout
             </button>
           </div>

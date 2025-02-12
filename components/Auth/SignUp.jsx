@@ -12,7 +12,7 @@ const SignUp = () => {
 
   return (
     <section className="flex justify-center items-start min-h-screen w-full font-[family-name:var(--font-roboto)] bg-zinc-900 px-5">
-      <div className="w-full max-w-md bg-zinc-800 rounded-lg p-6 border border-zinc-600 mt-10">
+      <div className="w-full max-w-md bg-zinc-800 rounded-lg p-6 border border-zinc-600 mt-20">
         <h2 className="text-4xl text-zinc-100 font-medium text-center mb-6">
           Get Started
           <span className="block font-[family-name:var(--font-instrument-serif)] bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
@@ -79,7 +79,7 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1 mt-2 w-full"
+            className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1 mt-2 w-full"
           >
             Sign Up
           </button>
