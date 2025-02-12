@@ -1,9 +1,9 @@
-import { Urbanist, Instrument_Serif } from "next/font/google";
+import { Roboto, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const urbanis = Urbanist({
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-urbanist-sans",
+const popins = Roboto({
+  weight: ["400"],
+  variable: "--font-roboto",
   subsets: ["latin"],
 });
 
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${urbanis.variable} ${instrumentSerif.variable} antialiased`}
+        className={`${popins.variable} ${instrumentSerif.variable} antialiased`}
       >
         {children}
       </body>

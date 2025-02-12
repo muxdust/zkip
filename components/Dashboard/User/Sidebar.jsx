@@ -32,51 +32,91 @@ const Sidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderSidebarItems = () => (
-    <ul className="flex flex-col gap-4">
-      {sidebarItems.map((item, index) => (
-        <li key={index}>
-          <button
-            onClick={() => changeActiveComponent(item.label.toLowerCase())}
-            className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-lg font-medium text-zinc-100 bg-zinc-900 hover:bg-zinc-800 border border-zinc-900 transition-colors duration-300 ease-in-out"
-          >
-            {item.icon} {item.label}
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-
   return (
-    <header className="flex font-[family-name:var(--font-urbanist-sans)]">
-      {/* Desktop Sidebar */}
-      <nav className="hidden lg:flex flex-col w-64 h-screen bg-zinc-900 p-4">
+    <header className="flex">
+      {/* Large Screens Sidebar (Full) */}
+      <nav className="hidden lg:flex flex-col w-64 h-screen bg-zinc-800 p-4 sticky top-0">
         <Link
           href="/dashboard"
-          className="text-white text-2xl font-medium mb-6"
+          className="text-zinc-100 text-2xl font-medium mb-6"
         >
           zkip
         </Link>
-        {renderSidebarItems()}
-        <button className="w-full mt-auto flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 transition-colors duration-300 ease-in-out">
+        <ul className="flex flex-col gap-4">
+          {sidebarItems.map((item, index) => (
+            <li key={index}>
+              <button
+                onClick={() => changeActiveComponent(item.label.toLowerCase())}
+                className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+              >
+                {item.icon} {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-auto">
           <LogOutIcon size={24} /> Logout
         </button>
       </nav>
 
-      {/* Mobile Sidebar */}
-      <div className="lg:hidden flex flex-col w-full bg-zinc-900 px-4 py-2">
+      {/* Medium Screens Sidebar (Icons Only) */}
+      <nav className="hidden md:flex lg:hidden flex-col w-20 h-screen bg-zinc-800 p-4 sticky top-0">
+        <Link
+          href="/dashboard"
+          className="text-zinc-100 text-2xl font-medium mb-6 text-center"
+        >
+          Z
+        </Link>
+        <ul className="flex flex-col gap-4">
+          {sidebarItems.map((item, index) => (
+            <li key={index}>
+              <button
+                onClick={() => changeActiveComponent(item.label.toLowerCase())}
+                className="h-12 w-12 flex justify-center items-center p-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+              >
+                {item.icon}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <button className="h-12 w-12 flex justify-center items-center mt-auto p-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out">
+          <LogOutIcon size={24} />
+        </button>
+      </nav>
+
+      {/* Mobile Sidebar (Toggle) */}
+      <div className="md:hidden flex flex-col w-full bg-zinc-800 px-4 py-2 sticky top-0">
         <div className="flex justify-between items-center">
-          <Link href="/dashboard" className="text-white text-2xl font-medium">
+          <Link
+            href="/dashboard"
+            className="text-zinc-100 text-2xl font-medium"
+          >
             zkip
           </Link>
-          <button onClick={toggleSidebar} className="text-white cursor-pointer">
+          <button
+            onClick={toggleSidebar}
+            className="text-zinc-100 cursor-pointer"
+          >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
         {isOpen && (
           <div className="mt-4">
-            {renderSidebarItems()}
-            <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 transition-colors duration-300 ease-in-out mt-4">
+            <ul className="flex flex-col gap-4">
+              {sidebarItems.map((item, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() =>
+                      changeActiveComponent(item.label.toLowerCase())
+                    }
+                    className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+                  >
+                    {item.icon} {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-4">
               <LogOutIcon size={24} /> Logout
             </button>
           </div>
