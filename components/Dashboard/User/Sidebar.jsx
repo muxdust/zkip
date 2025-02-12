@@ -10,11 +10,11 @@ import {
   LogOutIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { DashboardContext } from "./DashboardContext";
+import { userContext } from "../../userContext";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { activeComponent, setActiveComponent } = useContext(DashboardContext);
+  const { activeComponent, setActiveComponent } = useContext(userContext);
 
   const changeActiveComponent = (component) => {
     setActiveComponent(component);

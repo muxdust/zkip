@@ -2,12 +2,47 @@
 import React, { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
+import Bubble from "../ui/Bubble";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [bubbleMessage, setBubbleMessage] = useState(null);
+  const [bubbleType, setBubbleType] = useState(null);
+  const router = useRouter();
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
+  const togglePassword = () => setShowPassword(!showPassword);
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/user/signup", {
+        name,
+        username,
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        setBubbleMessage(response.data.message);
+        setBubbleType("success");
+
+        setTimeout(() => {
+          setBubbleMessage(null);
+          router.push("/login");
+        }, 2000);
+      }
+    } catch (error) {
+      setBubbleMessage(error.response?.data?.message || "Something went wrong");
+      setBubbleType("error");
+
+      setTimeout(() => setBubbleMessage(null), 2000);
+    }
   };
 
   return (
@@ -30,10 +65,15 @@ const SignUp = () => {
               name="name"
               placeholder="Enter your full name"
               className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="username" className="text-lg font-normal text-zinc-100">
+            <label
+              htmlFor="username"
+              className="text-lg font-normal text-zinc-100"
+            >
               Username
             </label>
             <input
@@ -42,10 +82,15 @@ const SignUp = () => {
               name="username"
               placeholder="Choose a username"
               className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="email" className="text-lg font-normal text-zinc-100">
+            <label
+              htmlFor="email"
+              className="text-lg font-normal text-zinc-100"
+            >
               Email
             </label>
             <input
@@ -53,11 +98,16 @@ const SignUp = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 text-md font-normal"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="text-lg font-normal text-zinc-100">
+            <label
+              htmlFor="password"
+              className="text-lg font-normal text-zinc-100"
+            >
               Password
             </label>
             <div className="flex items-center w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 bg-zinc-900 focus-within:border-green-500">
@@ -67,6 +117,8 @@ const SignUp = () => {
                 name="password"
                 placeholder="Enter your password"
                 className="w-full outline-none bg-transparent"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -79,12 +131,13 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
+            onClick={handleSignUp}
             className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1 mt-2 w-full"
           >
             Sign Up
           </button>
           <div className="flex items-center justify-start gap-2 text-zinc-300 text-md">
-            <p>Already have an account? </p>
+            <p>Already have an account?</p>
             <Link
               href="/login"
               className="text-green-500 hover:text-green-700 transition duration-300 ease-in-out cursor-pointer underline"
@@ -94,6 +147,8 @@ const SignUp = () => {
           </div>
         </form>
       </div>
+
+      {bubbleMessage && <Bubble message={bubbleMessage} type={bubbleType} />}
     </section>
   );
 };

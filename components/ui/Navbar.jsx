@@ -1,17 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { userContext } from "../userContext";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => setShowMenu((prev) => !prev);
 
+  const { isLogged } = useContext(userContext);
+
   return (
     <header className="w-full bg-zinc-800 py-2 font-[family-name:var(--font-roboto)] absolute top-0 left-0 z-50">
-      <nav className="container mx-auto flex justify-between items-center px-4 lg:px-8">
-        <Link href="/" className="text-2xl font-medium text-zinc-200 font-[family-name:var(--font-instrument-serif)]">
+      <nav className="lg:container w-[95vw] flex justify-between items-center px-4 lg:px-8">
+        <Link
+          href="/"
+          className="text-2xl font-medium text-zinc-200 font-[family-name:var(--font-instrument-serif)]"
+        >
           Zkip
         </Link>
         <ul className="hidden lg:flex items-center space-x-6">
@@ -24,12 +30,21 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="hidden lg:flex">
-          <Link
-            href="/login"
-            className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
-          >
-            Login
-          </Link>
+          {isLogged ? (
+            <Link
+              href="/login"
+              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+            >
+              Login
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+            >
+              Dashboard
+            </Link>
+          )}
         </div>
 
         <button onClick={toggleMenu} className="lg:hidden focus:outline-none">
@@ -58,13 +73,21 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <Link
-                href="/login"
-                className="px-5 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
-                onClick={toggleMenu}
-              >
-                Login
-              </Link>
+              {isLogged ? (
+                <Link
+                  href="/login"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+                >
+                  Login
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+                >
+                  Dashboard
+                </Link>
+              )}
             </li>
           </ul>
         </div>

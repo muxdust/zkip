@@ -1,5 +1,6 @@
 import { Roboto, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from "@/components/userContext";
 
 const popins = Roboto({
   weight: ["400"],
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${popins.variable} ${instrumentSerif.variable} antialiased`}
       >
-        {children}
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );

@@ -2,12 +2,40 @@
 import React, { useState } from "react";
 import { Eye, EyeClosed } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
+import Bubble from "../ui/Bubble";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [bubbleMessage, setBubbleMessage] = useState(null);
+  const [bubbleType, setBubbleType] = useState(null);
+  const router = useRouter();
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
+  const togglePassword = () => setShowPassword(!showPassword);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/user/login", { email, password });
+
+      if (response.status === 200) {
+        setBubbleMessage(response.data.message);
+        setBubbleType("success");
+
+        setTimeout(() => {
+          setBubbleMessage(null);
+          router.push("/dashboard");
+        }, 2000);
+      }
+    } catch (error) {
+      setBubbleMessage(error.response?.data?.message || "Something went wrong");
+      setBubbleType("error");
+
+      setTimeout(() => setBubbleMessage(null), 2000);
+    }
   };
 
   return (
@@ -30,6 +58,8 @@ const Login = () => {
               name="email"
               placeholder="Enter your email"
               className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -43,6 +73,8 @@ const Login = () => {
                 name="password"
                 placeholder="Enter your password"
                 className="w-full outline-none bg-transparent"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -55,12 +87,13 @@ const Login = () => {
           </div>
           <button
             type="submit"
+            onClick={handleLogin}
             className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1 mt-2 w-full"
           >
             Login
           </button>
           <div className="flex items-center justify-start gap-2 text-zinc-300 text-md">
-            <p>Don't have an account? </p>
+            <p>Don't have an account?</p>
             <Link
               href="/register"
               className=" text-green-500 hover:text-green-700 transition duration-300 ease-in-out cursor-pointer underline"
@@ -70,6 +103,8 @@ const Login = () => {
           </div>
         </form>
       </div>
+
+      {bubbleMessage && <Bubble message={bubbleMessage} type={bubbleType} />}
     </section>
   );
 };

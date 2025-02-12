@@ -13,20 +13,20 @@ export async function POST(request) {
   }
 
   try {
-    const user = await dbClient.user.findUnique({
-      where: {
-        email: email,
-      },
-    });
+    const existingEmail = await dbClient.user.findUnique({ where: { email } });
 
-    if (user) {
+    if (existingEmail) {
       return NextResponse.json(
         { message: "User already exists" },
         { status: 400 }
       );
     }
 
-    if (user.username === username) {
+    const existingUsername = await dbClient.user.findUnique({
+      where: { username },
+    });
+
+    if (existingUsername) {
       return NextResponse.json(
         { message: "Username already exists" },
         { status: 400 }
@@ -36,16 +36,11 @@ export async function POST(request) {
     const hashedPassword = await bcryptjs.hash(password, 10);
 
     const newUser = await dbClient.user.create({
-      data: {
-        name,
-        username,
-        email,
-        password: hashedPassword,
-      },
+      data: { name, username, email, password: hashedPassword },
     });
 
     return NextResponse.json(
-      { message: "User created successfully", user: newUser },
+      { message: "User signup successfully", user: newUser },
       { status: 200 }
     );
   } catch (error) {
