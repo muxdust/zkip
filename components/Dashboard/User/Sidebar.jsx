@@ -10,11 +10,9 @@ import {
   LogOutIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { userContext } from "../../userContext";
 
-const Sidebar = ({ logout }) => {
+const Sidebar = ({ logout, setActiveComponent }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { activeComponent, setActiveComponent } = useContext(userContext);
 
   const changeActiveComponent = (component) => {
     setActiveComponent(component);
@@ -46,7 +44,7 @@ const Sidebar = ({ logout }) => {
           {sidebarItems.map((item, index) => (
             <li key={index}>
               <button
-                onClick={() => changeActiveComponent(item.label.toLowerCase())}
+                onClick={() => setActiveComponent(item.label.toLowerCase())}
                 className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-all duration-300 ease-in-out"
               >
                 {item.icon} {item.label}
@@ -74,7 +72,7 @@ const Sidebar = ({ logout }) => {
           {sidebarItems.map((item, index) => (
             <li key={index}>
               <button
-                onClick={() => changeActiveComponent(item.label.toLowerCase())}
+                onClick={() => setActiveComponent(item.label.toLowerCase())}
                 className="h-12 w-12 flex justify-center items-center p-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-all duration-300 ease-in-out"
               >
                 {item.icon}

@@ -7,10 +7,8 @@ export const userContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
-  const [activeComponent, setActiveComponent] = useState("dashboard");
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  const getToken = () => {
     const authToken = Cookies.get("auth-token");
 
     if (authToken) {
@@ -18,15 +16,15 @@ export const UserProvider = ({ children }) => {
     } else {
       setIsLogged(false);
     }
+  };
+
+  useEffect(() => {
+    getToken();
   }, []);
 
   return (
     <userContext.Provider
       value={{
-        activeComponent,
-        setActiveComponent,
-        user,
-        setUser,
         isLogged,
         setIsLogged,
       }}

@@ -11,6 +11,8 @@ const Navbar = () => {
 
   const { isLogged } = useContext(userContext);
 
+  console.log(isLogged);
+
   return (
     <header className="w-full flex justify-center items-center bg-zinc-800 py-2 font-[family-name:var(--font-urbanist)] absolute top-0 left-0 z-50">
       <nav className="lg:container w-[95vw] flex justify-between items-center px-4">
