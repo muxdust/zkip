@@ -6,7 +6,7 @@ export async function GET() {
     { status: 200 }
   );
 
-  response.cookies.set("zkip-token", "", {
+  response.cookies.set("auth-token", "", {
     httpOnly: true,
     maxAge: 0,
     path: "/",

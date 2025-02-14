@@ -44,7 +44,7 @@ export async function POST(request) {
       { status: 200 }
     );
 
-    response.cookies.set("zkip-token", token, {
+    response.cookies.set("auth-token", token, {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 3600 * 7 * 24,

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export function middleware(request) {
-  const token = request.cookies.get("zkip-token")?.value;
+  const token = request.cookies.get("auth-token")?.value;
 
   if (!token) {
     console.log("No token found");

@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 export async function GET(request) {
   const cookieStore = await cookies();
-  const token = cookieStore.get("zkip-token")?.value;
+  const token = cookieStore.get("auth-token")?.value;
 
   if (!token) {
     return NextResponse.json(
