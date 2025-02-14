@@ -4,6 +4,17 @@ import { LRUCache } from "next/dist/server/lib/lru-cache";
 
 const cache = new LRUCache({ max: 500, maxAge: 1000 * 60 * 60 });
 
+const updateCount = async (shortKey) => {
+  try {
+    await dbClient.link.update({
+      where: { shortKey },
+      data: { clicks: { increment: 1 } },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const shortKey = searchParams.get("shortKey");
@@ -28,6 +39,8 @@ export async function GET(request) {
     }
 
     cache.set(shortKey, link.longUrl);
+
+    updateCount(shortKey);
 
     return NextResponse.json({ longUrl: link.longUrl }, { status: 200 });
   } catch (error) {

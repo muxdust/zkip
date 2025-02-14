@@ -12,11 +12,11 @@ const Navbar = () => {
   const { isLogged } = useContext(userContext);
 
   return (
-    <header className="w-full bg-zinc-800 py-2 font-[family-name:var(--font-roboto)] absolute top-0 left-0 z-50">
-      <nav className="lg:container w-[95vw] flex justify-between items-center px-4 lg:px-8">
+    <header className="w-full flex justify-center items-center bg-zinc-800 py-2 font-[family-name:var(--font-urbanist)] absolute top-0 left-0 z-50">
+      <nav className="lg:container w-[95vw] flex justify-between items-center px-4">
         <Link
           href="/"
-          className="text-2xl font-medium text-zinc-200 font-[family-name:var(--font-instrument-serif)]"
+          className="text-2xl font-medium text-zinc-200 font-[family-name:var(--font-bricolage)]"
         >
           Zkip
         </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
       </nav>
 
       {showMenu && (
-        <div className="fixed inset-0 bg-zinc-800 bg-opacity-95 flex flex-col justify-center items-center z-50">
+        <div className="fixed inset-0 bg-zinc-800 bg-opacity-95 flex flex-col justify-center items-center z-50 px-4">
           <button
             onClick={toggleMenu}
             className="absolute top-2 right-4 text-zinc-200 focus:outline-none"

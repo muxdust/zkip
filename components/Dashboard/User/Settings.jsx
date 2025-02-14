@@ -1,11 +1,29 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Trash2, SaveIcon } from "lucide-react";
 
-const Settings = () => {
+const Settings = ({
+  name,
+  email,
+  username,
+  password,
+  handleUpdate,
+  deleteAccount,
+}) => {
+  const [newName, setNewName] = useState(name);
+  const [newEmail, setNewEmail] = useState(email);
+  const [newUsername, setNewUsername] = useState(username);
+  const [newPassword, setNewPassword] = useState(password);
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    handleUpdate(newName, newEmail, newUsername, newPassword);
+  };
+
   return (
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
-        <h2 className="text-3xl font-medium text-zinc-100">
+        <h2 className="text-3xl font-medium text-zinc-100 font-[family-name:var(--font-bricolage)]">
           Your Profile Settings
         </h2>
         <div className="flex flex-col justify-start items-start w-full">
@@ -22,6 +40,8 @@ const Settings = () => {
                   type="text"
                   placeholder="Name"
                   className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
                 />
               </div>
               <div>
@@ -32,6 +52,8 @@ const Settings = () => {
                   type="text"
                   placeholder="Username"
                   className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
                 />
               </div>
               <div>
@@ -42,6 +64,8 @@ const Settings = () => {
                   type="email"
                   placeholder="Email"
                   className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -52,16 +76,20 @@ const Settings = () => {
                   type="password"
                   placeholder="Password"
                   className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
               <div className="flex gap-4">
                 <button
+                  onClick={handleSave}
                   type="submit"
                   className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1"
                 >
                   Save <SaveIcon size={16} className="inline-block" />
                 </button>
                 <button
+                  onClick={deleteAccount}
                   type="button"
                   className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-red-500 flex items-center justify-center gap-1"
                 >

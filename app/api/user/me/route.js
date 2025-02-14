@@ -1,15 +1,25 @@
 import { NextResponse } from "next/server";
-import tokenData from "@/helpers/tokenData";
 import dbClient from "@/prisma/dbClient";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
 export async function GET(request) {
-  const { email } = tokenData(request).data;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("zkip-token")?.value;
+
+  if (!token) {
+    return NextResponse.json(
+      { message: "Invalid or missing token" },
+      { status: 401 }
+    );
+  }
 
   try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { email } = decoded;
+
     const user = await dbClient.user.findUnique({
-      where: {
-        email: email,
-      },
+      where: { email },
       select: {
         id: true,
         name: true,
@@ -22,7 +32,6 @@ export async function GET(request) {
 
     return NextResponse.json({ user }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }

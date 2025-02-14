@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { userContext } from "../../userContext";
 
-const Sidebar = () => {
+const Sidebar = ({ logout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { activeComponent, setActiveComponent } = useContext(userContext);
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
   const sidebarItems = [
     { icon: <Home size={24} />, label: "Dashboard" },
     { icon: <LinkIcon size={24} />, label: "Links" },
-    { icon: <ChartColumn size={24} />, label: "Analytics" },
+    // { icon: <ChartColumn size={24} />, label: "Analytics" },
     { icon: <Settings size={24} />, label: "Settings" },
   ];
 
@@ -38,7 +38,7 @@ const Sidebar = () => {
       <nav className="hidden lg:flex flex-col w-64 h-screen bg-zinc-800 p-4 sticky top-0">
         <Link
           href="/dashboard"
-          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)] mb-6"
+          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-bricolage)] mb-6"
         >
           Zkip
         </Link>
@@ -47,14 +47,17 @@ const Sidebar = () => {
             <li key={index}>
               <button
                 onClick={() => changeActiveComponent(item.label.toLowerCase())}
-                className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+                className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-all duration-300 ease-in-out"
               >
                 {item.icon} {item.label}
               </button>
             </li>
           ))}
         </ul>
-        <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-auto">
+        <button
+          onClick={logout}
+          className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-all duration-300 ease-in-out mt-auto"
+        >
           <LogOutIcon size={24} /> Logout
         </button>
       </nav>
@@ -63,7 +66,7 @@ const Sidebar = () => {
       <nav className="hidden md:flex lg:hidden flex-col w-20 h-screen bg-zinc-800 p-4 sticky top-0">
         <Link
           href="/dashboard"
-          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)] mb-6 text-center"
+          className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-bricolage)] mb-6 text-center"
         >
           Zkip
         </Link>
@@ -72,14 +75,17 @@ const Sidebar = () => {
             <li key={index}>
               <button
                 onClick={() => changeActiveComponent(item.label.toLowerCase())}
-                className="h-12 w-12 flex justify-center items-center p-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+                className="h-12 w-12 flex justify-center items-center p-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-all duration-300 ease-in-out"
               >
                 {item.icon}
               </button>
             </li>
           ))}
         </ul>
-        <button className="h-12 w-12 flex justify-center items-center mt-auto p-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out">
+        <button
+          onClick={logout}
+          className="h-12 w-12 flex justify-center items-center mt-auto p-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-all duration-300 ease-in-out"
+        >
           <LogOutIcon size={24} />
         </button>
       </nav>
@@ -89,7 +95,7 @@ const Sidebar = () => {
         <div className="flex justify-between items-center">
           <Link
             href="/dashboard"
-            className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-instrument-serif)]"
+            className="text-zinc-100 text-2xl font-medium font-[family-name:var(--font-bricolage)]"
           >
             Zkip
           </Link>
@@ -109,14 +115,17 @@ const Sidebar = () => {
                     onClick={() =>
                       changeActiveComponent(item.label.toLowerCase())
                     }
-                    className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-colors duration-300 ease-in-out"
+                    className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-300 bg-zinc-800 hover:bg-zinc-900 border border-zinc-800 transition-all duration-300 ease-in-out"
                   >
                     {item.icon} {item.label}
                   </button>
                 </li>
               ))}
             </ul>
-            <button className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-colors duration-300 ease-in-out mt-4">
+            <button
+              onClick={logout}
+              className="w-full flex items-center gap-2 px-3 py-2 cursor-pointer rounded-md text-md font-medium text-zinc-100 hover:opacity-90 bg-gradient-to-br from-red-500 to-red-700 border-red-500 transition-all duration-300 ease-in-out mt-4"
+            >
               <LogOutIcon size={24} /> Logout
             </button>
           </div>

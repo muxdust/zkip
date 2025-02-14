@@ -1,11 +1,23 @@
 import { NextResponse } from "next/server";
-import tokenData from "@/helpers/tokenData";
 import dbClient from "@/prisma/dbClient";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
 export async function DELETE(request) {
-  const { email } = tokenData(request).data;
+  const cookieStore = await cookies();
+  const token = cookieStore.get("zkip-token")?.value;
+
+  if (!token) {
+    return NextResponse.json(
+      { message: "Invalid or missing token" },
+      { status: 401 }
+    );
+  }
 
   try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { email } = decoded;
+
     await dbClient.user.delete({
       where: {
         email: email,

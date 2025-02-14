@@ -1,14 +1,15 @@
 import React from "react";
-import { ArrowRight, Link } from "lucide-react";
+import { ArrowRight, LinkIcon } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="flex justify-center items-center min-h-screen w-full hover:opacity-90 bg-gradient-to-br from-zinc-800 to-zinc-900 font-[family-name:var(--font-roboto)] relative">
+    <section className="flex justify-center items-center min-h-screen w-full bg-gradient-to-br from-zinc-800 to-zinc-900 font-[family-name:var(--font-urbanist)] relative">
       <div className="absolute h-20 w-32 bg-green-600 rounded-full flex justify-center items-center z-0 blur-[100px] top-0"></div>
       <div className="flex flex-col justify-center items-center text-center w-full max-w-2xl px-4">
-        <h2 className="text-5xl md:text-6xl text-zinc-100 font-medium flex flex-col items-center justify-center md:gap-2 gap-1">
+        <h2 className="text-5xl md:text-6xl text-zinc-100 font-medium flex flex-col items-center justify-center md:gap-2 gap-1 font-[family-name:var(--font-bricolage)]">
           <span>Zkip the Clutter</span>
-          <span className="font-[family-name:var(--font-instrument-serif)] bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
             Link smarter
           </span>
         </h2>
@@ -19,7 +20,7 @@ const Hero = () => {
           href="/login"
           className="mt-6 px-5 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center"
         >
-          Get Started{" "}
+          <span>Get Started</span>
           <ArrowRight
             size={24}
             className="inline-block ml-2 p-0.5 rounded-full bg-white text-green-600"
@@ -40,7 +41,7 @@ const Hero = () => {
             <div className="w-1/2 h-9 bg-zinc-900 rounded flex justify-center items-center">
               <p className="text-md text-zinc-300 flex items-center gap-0">
                 Short
-                <Link size={16} className="inline-block ml-2" />
+                <LinkIcon size={16} className="inline-block ml-2" />
               </p>
             </div>
           </div>

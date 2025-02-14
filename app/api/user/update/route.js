@@ -1,12 +1,26 @@
 import { NextResponse } from "next/server";
-import tokenData from "@/helpers/tokenData";
 import dbClient from "@/prisma/dbClient";
+import bcryptjs from "bcryptjs";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
 export async function PUT(request) {
-  const { email } = tokenData(request).data;
-  const { name, username, profileImage, password } = await request.json();
+  const cookieStore = await cookies();
+  const token = cookieStore.get("zkip-token")?.value;
+
+  if (!token) {
+    return NextResponse.json(
+      { message: "Invalid or missing token" },
+      { status: 401 }
+    );
+  }
 
   try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { email } = decoded;
+
+    const { name, username, profileImage, password } = await request.json();
+
     const updateData = {
       name,
       username,
@@ -19,16 +33,13 @@ export async function PUT(request) {
     }
 
     const user = await dbClient.user.update({
-      where: {
-        email: email,
-      },
+      where: { email },
       data: updateData,
     });
 
     return NextResponse.json(
-      { message: "Updated successfully" },
-      { status: 200 },
-      { user }
+      { message: "Updated successfully", user },
+      { status: 200 }
     );
   } catch (error) {
     console.log(error);

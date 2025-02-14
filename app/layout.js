@@ -1,16 +1,16 @@
-import { Roboto, Instrument_Serif } from "next/font/google";
+import { Urbanist, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "@/components/userContext";
 
-const popins = Roboto({
-  weight: ["400"],
-  variable: "--font-roboto",
+const urbanist = Urbanist({
+  weight: ["400", "500"],
+  variable: "--font-urbanist",
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
+const bricolage = Bricolage_Grotesque({
   weight: ["400"],
-  variable: "--font-instrument-serif",
+  variable: "--font-bricolage",
   subsets: ["latin"],
 });
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${popins.variable} ${instrumentSerif.variable} antialiased`}
+        className={`${urbanist.variable} ${bricolage.variable} antialiased`}
       >
         <UserProvider>{children}</UserProvider>
       </body>

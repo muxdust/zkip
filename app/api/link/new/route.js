@@ -1,16 +1,29 @@
 import { NextResponse } from "next/server";
-import tokenData from "@/helpers/tokenData";
 import dbClient from "@/prisma/dbClient";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
 export async function POST(request) {
-  const { email } = tokenData(request).data;
-  const { originalUrl } = await request.json();
+  const cookieStore = await cookies();
+  const token = cookieStore.get("zkip-token")?.value;
 
-  if (!originalUrl) {
-    return NextResponse.json({ message: "Url is required" }, { status: 400 });
+  if (!token) {
+    return NextResponse.json(
+      { message: "Invalid or missing token" },
+      { status: 401 }
+    );
   }
 
   try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { email } = decoded;
+
+    const { originalUrl } = await request.json();
+
+    if (!originalUrl) {
+      return NextResponse.json({ message: "Url is required" }, { status: 400 });
+    }
+
     const generateShortKey = () => {
       const chars =
         "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -34,10 +47,13 @@ export async function POST(request) {
       }
     }
 
+    const shortUrl = `${process.env.BASE_URL}/${shortKey}`;
+
     const link = await dbClient.link.create({
       data: {
         originalUrl,
         shortKey,
+        shortUrl,
         user: {
           connect: { email },
         },

@@ -25,9 +25,9 @@ const EverythingYouNeed = () => {
   ];
 
   return (
-    <section className="flex justify-center items-start w-full font-[family-name:var(--font-roboto)] bg-zinc-800 py-10">
+    <section className="flex justify-center items-start w-full font-[family-name:var(--font-urbanist)] bg-zinc-800 py-10">
       <div className="flex flex-col justify-start items-start w-[95vw] lg:container">
-        <h2 className="text-4xl text-zinc-100 font-medium text-center mb-6 self-center">
+        <h2 className="text-4xl text-zinc-100 font-medium text-center mb-6 self-center font-[family-name:var(--font-bricolage)]">
           Everything You Need
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full justify-start items-stretch">

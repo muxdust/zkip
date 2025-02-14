@@ -46,11 +46,11 @@ const SignUp = () => {
   };
 
   return (
-    <section className="flex justify-center items-start min-h-screen w-full font-[family-name:var(--font-roboto)] bg-zinc-900 px-5">
+    <section className="flex justify-center items-start min-h-screen w-full font-[family-name:var(--font-urbanist)] bg-zinc-900 px-5">
       <div className="w-full max-w-md bg-zinc-800 rounded-lg p-6 border border-zinc-600 mt-20">
         <h2 className="text-4xl text-zinc-100 font-medium text-center mb-6">
           Get Started
-          <span className="block font-[family-name:var(--font-instrument-serif)] bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
+          <span className="block font-[family-name:var(--font-bricolage)] bg-gradient-to-b from-zinc-100 to-zinc-300 bg-clip-text text-transparent">
             Create your account
           </span>
         </h2>

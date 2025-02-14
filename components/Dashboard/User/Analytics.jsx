@@ -47,7 +47,7 @@ const Analytics = () => {
   return (
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
-        <h2 className="text-3xl font-medium text-zinc-100">Analytics</h2>
+        <h2 className="text-3xl font-medium text-zinc-100 font-[family-name:var(--font-bricolage)]">Analytics</h2>
         <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-800 mt-4">
           <h3 className="text-2xl font-normal text-zinc-100">
             Time Based Analytics

@@ -61,9 +61,69 @@ const Dashboard = () => {
     }
   };
 
+  const createLink = async (originalUrl) => {
+    try {
+      const response = await axios.post("/api/link/new", { originalUrl });
+      if (response.status === 200) {
+        setBubbleMessage(response.data.message);
+        setBubbleType("success");
+        setTimeout(() => {
+          setBubbleMessage(null);
+          getUser();
+        }, 2000);
+      }
+    } catch (error) {
+      setBubbleMessage(error.response?.data?.message || "Something went wrong");
+      setBubbleType("error");
+      setTimeout(() => setBubbleMessage(null), 2000);
+    }
+  };
+
+  const handleUpdate = async (name, email, username, password) => {
+    try {
+      const response = await axios.put("/api/user/update", {
+        name,
+        email,
+        username,
+        password,
+      });
+      if (response.status === 200) {
+        setBubbleMessage(response.data.message);
+        setBubbleType("success");
+        setTimeout(() => {
+          setBubbleMessage(null);
+          getUser();
+        }, 2000);
+      }
+    } catch (error) {
+      setBubbleMessage(error.response?.data?.message || "Something went wrong");
+      setBubbleType("error");
+      setTimeout(() => setBubbleMessage(null), 2000);
+    }
+  };
+
+  const deleteAccount = async () => {
+    try {
+      const response = await axios.delete("/api/user/delete");
+      if (response.status === 200) {
+        setUser(null);
+        logout();
+        setBubbleMessage(response.data.message);
+        setBubbleType("success");
+        setTimeout(() => {
+          setBubbleMessage(null);
+        }, 2000);
+      }
+    } catch (error) {
+      setBubbleMessage(error.response?.data?.message || "Something went wrong");
+      setBubbleType("error");
+      setTimeout(() => setBubbleMessage(null), 2000);
+    }
+  };
+
   return (
-    <div className="flex flex-col md:flex-row font-[family-name:var(--font-roboto)]">
-      <Sidebar />
+    <div className="flex flex-col md:flex-row font-[family-name:var(--font-urbanist)]">
+      <Sidebar logout={logout} />
       <main className="flex-1 p-4">
         {activeComponent === "dashboard" && (
           <DashboardComp
@@ -73,11 +133,27 @@ const Dashboard = () => {
             totalUsers={user?.totalUsers}
             recentLinks={recentLinks}
             deleteLink={deleteLink}
+            createLink={createLink}
           />
         )}
-        {activeComponent === "links" && <LinksComp />}
-        {activeComponent === "analytics" && <Analytics />}
-        {activeComponent === "settings" && <Settings />}
+        {activeComponent === "links" && (
+          <LinksComp
+            createLink={createLink}
+            deleteLink={deleteLink}
+            userLinks={user?.links}
+          />
+        )}
+        {/* {activeComponent === "analytics" && <Analytics />} */}
+        {activeComponent === "settings" && (
+          <Settings
+            name={user?.name}
+            email={user?.email}
+            username={user?.username}
+            password={user?.password || ""}
+            handleUpdate={handleUpdate}
+            deleteAccount={deleteAccount}
+          />
+        )}
 
         {bubbleMessage && <Bubble type={bubbleType} message={bubbleMessage} />}
       </main>
