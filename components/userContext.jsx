@@ -11,10 +11,19 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = Cookies.get("zkip-token");
-    if (token) {
-      setIsLogged(true);
-    }
+    const checkToken = () => {
+      const token = Cookies.get("zkip-token");
+      if (token) {
+        setIsLogged(true);
+      } else {
+        setIsLogged(false);
+      }
+    };
+
+    checkToken();
+
+    const interval = setInterval(checkToken, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

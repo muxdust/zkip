@@ -41,11 +41,11 @@ const Dashboard = () => {
     getUser();
   }, []);
 
-  const recentLinks = user?.links.slice(0, 5);
-
-  const deleteLink = async (id) => {
+  const deleteLink = async (shortKey) => {
     try {
-      const response = await axios.delete(`/api/link/delete/${id}`);
+      const response = await axios.delete(
+        `/api/link/delete?shortKey=${shortKey}`
+      );
       if (response.status === 200) {
         setBubbleMessage(response.data.message);
         setBubbleType("success");
@@ -121,6 +121,12 @@ const Dashboard = () => {
     }
   };
 
+  const recentLinks = user?.links.slice().reverse().slice(0, 5);
+
+  const totalClicks = user?.links.reduce((acc, link) => acc + link.clicks, 0);
+
+  const totalLinks = user?.links.length;
+
   return (
     <div className="flex flex-col md:flex-row font-[family-name:var(--font-urbanist)]">
       <Sidebar logout={logout} />
@@ -128,9 +134,8 @@ const Dashboard = () => {
         {activeComponent === "dashboard" && (
           <DashboardComp
             name={user?.name}
-            totalLinks={user?.totalLinks}
-            totalClicks={user?.totalClicks}
-            totalUsers={user?.totalUsers}
+            totalLinks={totalLinks}
+            totalClicks={totalClicks}
             recentLinks={recentLinks}
             deleteLink={deleteLink}
             createLink={createLink}
@@ -140,7 +145,7 @@ const Dashboard = () => {
           <LinksComp
             createLink={createLink}
             deleteLink={deleteLink}
-            userLinks={user?.links}
+            userLinks={user?.links.slice().reverse()}
           />
         )}
         {/* {activeComponent === "analytics" && <Analytics />} */}

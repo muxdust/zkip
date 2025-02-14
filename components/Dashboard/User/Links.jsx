@@ -4,23 +4,27 @@ import { Copy, CopyCheck, Trash2, SendHorizontal } from "lucide-react";
 
 const LinksComp = ({ userLinks, createLink, deleteLink }) => {
   const [originalUrl, setOriginalUrl] = useState("");
-  const [isCopied, setIsCopied] = useState(false);
+  const [copiedLinkId, setCopiedLinkId] = useState(null);
 
   const handleCreateLink = (e) => {
     e.preventDefault();
     createLink(originalUrl);
   };
 
-  const copyLink = (link) => {
-    navigator.clipboard.writeText(link);
-    setIsCopied(true);
+  const copyLink = (linkId, shortUrl) => {
+    navigator.clipboard.writeText(shortUrl);
+    setCopiedLinkId(linkId);
+
+    setTimeout(() => {
+      setCopiedLinkId(null);
+    }, 2000);
   };
 
   return (
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
         <div className="flex flex-col justify-start items-start w-full lg:max-w-2xl mt-4 p-4 rounded-lg bg-zinc-800">
-          <h3 className="text-2xl font-medium text-zinc-100 font-[family-name:var(--font-bricolage)]">
+          <h3 className="text-2xl font-medium text-zinc-100">
             Create a new link
           </h3>
           <form className="flex justify-between items-center w-full mt-4 gap-2">
@@ -39,9 +43,7 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
             </button>
           </form>
         </div>
-        <h2 className="text-3xl font-medium text-zinc-100 font-[family-name:var(--font-bricolage)] mt-4">
-          Your Links
-        </h2>
+        <h2 className="text-3xl font-medium text-zinc-100 mt-4">Your Links</h2>
         {userLinks && userLinks.length > 0 ? (
           <div className="w-full mt-4 overflow-x-auto rounded-lg">
             <table className="w-full text-left">
@@ -62,14 +64,14 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
                 </tr>
               </thead>
               <tbody>
-                {userLinks.map((link, index) => (
-                  <tr key={index} className=" border-b border-zinc-700">
+                {userLinks.map((link) => (
+                  <tr key={link.id} className="border-b border-zinc-700">
                     <td className="p-4 text-zinc-300">{link.originalUrl}</td>
                     <td className="p-4 text-zinc-300">{link.shortUrl}</td>
                     <td className="p-4 text-zinc-300">{link.clicks}</td>
                     <td className="p-4 flex justify-start items-center gap-2 md:gap-5">
-                      <button className="">
-                        {isCopied ? (
+                      <button>
+                        {copiedLinkId === link.id ? (
                           <CopyCheck
                             size={20}
                             className="inline-block cursor-pointer text-green-500"
@@ -78,12 +80,12 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
                           <Copy
                             size={20}
                             className="inline-block cursor-pointer text-blue-500"
-                            onClick={() => copyLink(link.shortUrl)}
+                            onClick={() => copyLink(link.id, link.shortUrl)}
                           />
                         )}
                       </button>
                       <button
-                        onClick={() => deleteLink(link._id)}
+                        onClick={() => deleteLink(link.id)}
                         className="text-red-500 ml-2"
                       >
                         <Trash2
@@ -99,7 +101,7 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
           </div>
         ) : (
           <p className="text-lg text-zinc-300 mt-4">
-            {`You don't have any links yet. Create one now!`}
+            You don't have any links yet. Create one now!
           </p>
         )}
       </div>

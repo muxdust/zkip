@@ -8,7 +8,11 @@ const updateCount = async (shortKey) => {
   try {
     await dbClient.link.update({
       where: { shortKey },
-      data: { clicks: { increment: 1 } },
+      data: {
+        clicks: {
+          increment: 1,
+        },
+      },
     });
   } catch (error) {
     console.error(error);
@@ -25,24 +29,25 @@ export async function GET(request) {
 
   const cachedLongUrl = cache.get(shortKey);
   if (cachedLongUrl) {
+    updateCount(shortKey);
     return NextResponse.json({ longUrl: cachedLongUrl }, { status: 200 });
   }
 
   try {
     const link = await dbClient.link.findUnique({
       where: { shortKey },
-      select: { longUrl: true },
+      select: { originalUrl: true },
     });
 
     if (!link) {
       return NextResponse.json({ message: "Not Found" }, { status: 404 });
     }
 
-    cache.set(shortKey, link.longUrl);
+    cache.set(shortKey, link.originalUrl);
 
     updateCount(shortKey);
 
-    return NextResponse.json({ longUrl: link.longUrl }, { status: 200 });
+    return NextResponse.json({ longUrl: link.originalUrl }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json(

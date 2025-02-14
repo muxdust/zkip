@@ -32,17 +32,17 @@ const Navbar = () => {
         <div className="hidden lg:flex">
           {isLogged ? (
             <Link
-              href="/login"
+              href="/dashboard"
               className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
             >
-              Login
+              Dashboard
             </Link>
           ) : (
             <Link
               href="/login"
               className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
             >
-              Dashboard
+              Login
             </Link>
           )}
         </div>
@@ -75,17 +75,17 @@ const Navbar = () => {
             <li>
               {isLogged ? (
                 <Link
-                  href="/login"
+                  href="/dashboard"
                   className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
                 >
-                  Login
+                  Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
                   className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
                 >
-                  Dashboard
+                  Login
                 </Link>
               )}
             </li>
