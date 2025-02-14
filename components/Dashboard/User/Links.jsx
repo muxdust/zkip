@@ -68,16 +68,16 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
                     <td className="p-4 text-zinc-300">{link.shortUrl}</td>
                     <td className="p-4 text-zinc-300">{link.clicks}</td>
                     <td className="p-4 flex justify-start items-center gap-2 md:gap-5">
-                      <button className="text-blue-500">
+                      <button className="">
                         {isCopied ? (
                           <CopyCheck
                             size={20}
-                            className="inline-block cursor-pointer"
+                            className="inline-block cursor-pointer text-green-500"
                           />
                         ) : (
                           <Copy
                             size={20}
-                            className="inline-block cursor-pointer"
+                            className="inline-block cursor-pointer text-blue-500"
                             onClick={() => copyLink(link.shortUrl)}
                           />
                         )}
