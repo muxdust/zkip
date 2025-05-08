@@ -24,7 +24,7 @@ export async function POST(request) {
       return NextResponse.json({ message: "Url is required" }, { status: 400 });
     }
 
-    const generateShortKey = () => {
+    const generatelinkId = () => {
       const chars =
         "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
       let result = "";
@@ -34,25 +34,25 @@ export async function POST(request) {
       return result;
     };
 
-    let shortKey;
+    let linkId;
     let isUnique = false;
 
     while (!isUnique) {
-      shortKey = generateShortKey();
+      linkId = generatelinkId();
       const existingKey = await dbClient.link.findUnique({
-        where: { shortKey },
+        where: { linkId },
       });
       if (!existingKey) {
         isUnique = true;
       }
     }
 
-    const shortUrl = `${process.env.BASE_URL}/${shortKey}`;
+    const shortUrl = `${process.env.BASE_URL}/${linkId}`;
 
     const link = await dbClient.link.create({
       data: {
         originalUrl,
-        shortKey,
+        linkId,
         shortUrl,
         user: {
           connect: { email },

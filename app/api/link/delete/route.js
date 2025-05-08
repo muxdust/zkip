@@ -3,12 +3,14 @@ import dbClient from "@/prisma/dbClient";
 
 export async function DELETE(request) {
   const { searchParams } = new URL(request.url);
-  const shortKey = searchParams.get("shortKey");
+  const linkId = searchParams.get("linkId");
+
+  console.log(linkId);
 
   try {
     await dbClient.link.delete({
       where: {
-        shortKey: shortKey,
+        id: linkId,
       },
     });
 

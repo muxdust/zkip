@@ -44,10 +44,10 @@ const Dashboard = () => {
     getUser();
   }, []);
 
-  const deleteLink = async (shortKey) => {
+  const deleteLink = async (linkId) => {
     try {
       const response = await axios.delete(
-        `/api/link/delete?shortKey=${shortKey}`
+        `/api/link/delete?linkId=${linkId}`
       );
       if (response.status === 200) {
         setBubbleMessage(response.data.message);
