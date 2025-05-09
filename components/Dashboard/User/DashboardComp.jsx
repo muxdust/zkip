@@ -114,7 +114,7 @@ const DashboardComp = ({
                           )}
                         </button>
                         <button
-                          onClick={() => deleteLink(link.id)}
+                          onClick={() => deleteLink(link.shortKey)}
                           className="text-red-500 ml-2"
                         >
                           <Trash2

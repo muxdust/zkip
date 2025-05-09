@@ -85,7 +85,7 @@ const LinksComp = ({ userLinks, createLink, deleteLink }) => {
                         )}
                       </button>
                       <button
-                        onClick={() => deleteLink(link.linkId)}
+                        onClick={() => deleteLink(link.shortKey)}
                         className="text-red-500 ml-2"
                       >
                         <Trash2
