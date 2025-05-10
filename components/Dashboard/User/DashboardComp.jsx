@@ -1,6 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { SendHorizontal, Copy, CopyCheck, Trash2 } from "lucide-react";
+import {
+  SendHorizontal,
+  Copy,
+  CopyCheck,
+  Trash2,
+  ExternalLink,
+} from "lucide-react";
+import Link from "next/link";
 
 const DashboardComp = ({
   name,
@@ -38,20 +45,20 @@ const DashboardComp = ({
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 w-full">
-          <div className="flex justify-center items-center flex-col bg-zinc-800 p-4 rounded-lg w-full">
+          <div className="flex justify-center items-center flex-col bg-zinc-900 p-4 rounded-lg w-full">
             <h3 className="text-xl font-medium text-zinc-100">Total Links</h3>
             <p className="text-3xl font-medium text-zinc-300 mt-2">
               {totalLinks || 0}
             </p>
           </div>
-          <div className="flex justify-center items-center flex-col bg-zinc-800 p-4 rounded-lg w-full">
+          <div className="flex justify-center items-center flex-col bg-zinc-900 p-4 rounded-lg w-full">
             <h3 className="text-xl font-medium text-zinc-100">Total Clicks</h3>
             <p className="text-3xl font-medium text-zinc-300 mt-2">
               {totalClicks || 0}
             </p>
           </div>
         </div>
-        <div className="flex flex-col justify-start items-start w-full lg:max-w-2xl mt-8 p-4 rounded-lg bg-zinc-800">
+        <div className="flex flex-col justify-start items-start w-full lg:max-w-2xl mt-8 p-4 rounded-lg bg-zinc-900">
           <h3 className="text-2xl font-medium text-zinc-100">
             Create a new link
           </h3>
@@ -59,7 +66,7 @@ const DashboardComp = ({
             <input
               type="url"
               placeholder="Paste your link here ....."
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-950"
               value={originalUrl}
               onChange={(e) => setOriginalUrl(e.target.value)}
             />
@@ -76,7 +83,7 @@ const DashboardComp = ({
           {recentLinks && recentLinks.length > 0 ? (
             <div className="w-full mt-4 overflow-x-auto rounded-lg">
               <table className="w-full text-left">
-                <thead className="bg-zinc-800">
+                <thead className="bg-zinc-900">
                   <tr>
                     <th className="p-4 text-zinc-100 font-medium text-lg">
                       Original URL
@@ -96,7 +103,15 @@ const DashboardComp = ({
                   {recentLinks.map((link) => (
                     <tr key={link.id} className="border-b border-zinc-700">
                       <td className="p-4 text-zinc-300">{link.originalUrl}</td>
-                      <td className="p-4 text-zinc-300">{link.shortUrl}</td>
+                      <td className="p-4 text-zinc-300 flex items-center gap-2">
+                        <Link href={link.shortUrl}>
+                          <ExternalLink
+                            size={20}
+                            className="inline-block text-orange-500"
+                          />
+                        </Link>
+                        {link.shortUrl}
+                      </td>
                       <td className="p-4 text-zinc-300">{link.clicks}</td>
                       <td className="p-4 flex justify-start items-center gap-2 md:gap-5">
                         <button>

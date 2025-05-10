@@ -26,19 +26,19 @@ const Hero = () => {
             className="inline-block ml-2 p-0.5 rounded-full bg-white text-orange-600"
           />
         </Link>
-        <div className="mt-8 text-zinc-300 text-sm w-full max-w-lg bg-zinc-800 rounded-lg p-1 shadow-lg border border-zinc-600">
-          <div className="w-full h-8 bg-zinc-900 mb-2 rounded-md flex items-center px-4">
+        <div className="mt-8 text-zinc-300 text-sm w-full max-w-lg bg-zinc-900 rounded-lg p-1 shadow-lg border border-zinc-600">
+          <div className="w-full h-8 bg-zinc-950 mb-2 rounded-md flex items-center px-4">
             <span className="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
             <span className="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
             <span className="w-3 h-3 bg-orange-500 rounded-full"></span>
           </div>
           <div className="px-4 pb-4 flex flex-row justify-between items-center gap-2">
-            <div className="w-full h-9 bg-zinc-900 rounded flex justify-start items-center">
+            <div className="w-full h-9 bg-zinc-950 rounded flex justify-start items-center">
               <p className="text-sm text-zinc-300 ml-2">
                 {`Paste your link here .....`}
               </p>
             </div>
-            <div className="w-1/2 h-9 bg-zinc-900 rounded flex justify-center items-center">
+            <div className="w-1/2 h-9 bg-zinc-950 rounded flex justify-center items-center">
               <p className="text-md text-zinc-300 flex items-center gap-0">
                 Short
                 <LinkIcon size={16} className="inline-block ml-2" />

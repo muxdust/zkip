@@ -29,7 +29,7 @@ const Settings = ({
         <div className="flex flex-col justify-start items-start w-full">
           <form
             action=""
-            className="mt-4 p-4 rounded-lg bg-zinc-800 max-w-2xl w-full"
+            className="mt-4 p-4 rounded-lg bg-zinc-900 max-w-2xl w-full"
           >
             <div className="flex flex-col gap-4 w-full">
               <div>
@@ -39,7 +39,7 @@ const Settings = ({
                 <input
                   type="text"
                   placeholder="Name"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-950 mt-2"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                 />
@@ -51,7 +51,7 @@ const Settings = ({
                 <input
                   type="text"
                   placeholder="Username"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-950 mt-2"
                   value={newUsername}
                   onChange={(e) => setNewUsername(e.target.value)}
                 />
@@ -63,7 +63,7 @@ const Settings = ({
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-950 mt-2"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                 />
@@ -75,7 +75,7 @@ const Settings = ({
                 <input
                   type="password"
                   placeholder="Password"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-950 mt-2"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />

@@ -14,7 +14,7 @@ const Navbar = () => {
   console.log(isLogged);
 
   return (
-    <header className="w-full flex justify-center items-center bg-zinc-800 py-2 font-[family-name:var(--font-urbanist)] absolute top-0 left-0 z-50">
+    <header className="w-full flex justify-center items-center bg-zinc-900 py-2 font-[family-name:var(--font-urbanist)] absolute top-0 left-0 z-50">
       <nav className="lg:container w-[95vw] flex justify-between items-center px-4">
         <Link
           href="/"
@@ -55,7 +55,7 @@ const Navbar = () => {
       </nav>
 
       {showMenu && (
-        <div className="fixed inset-0 bg-zinc-800 bg-opacity-95 flex flex-col justify-center items-center z-50 px-4">
+        <div className="fixed inset-0 bg-zinc-900 bg-opacity-95 flex flex-col justify-center items-center z-50 px-4">
           <button
             onClick={toggleMenu}
             className="absolute top-2 right-4 text-zinc-200 focus:outline-none"

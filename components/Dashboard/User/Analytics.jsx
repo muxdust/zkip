@@ -48,12 +48,12 @@ const Analytics = () => {
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
         <h2 className="text-3xl font-medium text-zinc-100 font-[family-name:var(--font-bricolage)]">Analytics</h2>
-        <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-800 mt-4">
+        <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-900 mt-4">
           <h3 className="text-2xl font-normal text-zinc-100">
             Time Based Analytics
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-4">
-            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-900">
+            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-950">
               <h3 className="text-xl font-normal text-zinc-100">Today</h3>
               <p className="text-md font-normal text-zinc-300 flex justify-between items-center w-full mt-2">
                 <span>Total Clicks</span>
@@ -64,7 +64,7 @@ const Analytics = () => {
                 <span>100</span>
               </p>
             </div>
-            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-900">
+            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-950">
               <h3 className="text-xl font-normal text-zinc-100">This Week</h3>
               <p className="text-md font-normal text-zinc-300 flex justify-between items-center w-full mt-2">
                 <span>Total Clicks</span>
@@ -75,7 +75,7 @@ const Analytics = () => {
                 <span>1100</span>
               </p>
             </div>
-            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-900">
+            <div className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-950">
               <h3 className="text-xl font-normal text-zinc-100">This Month</h3>
               <p className="text-md font-normal text-zinc-300 flex justify-between items-center w-full mt-2">
                 <span>Total Clicks</span>
@@ -93,7 +93,7 @@ const Analytics = () => {
         </h2>
         <div className="w-full mt-4 overflow-x-auto rounded-lg">
           <table className="w-full text-left">
-            <thead className="bg-zinc-800">
+            <thead className="bg-zinc-900">
               <tr>
                 <th className="p-4 text-zinc-100 font-medium text-lg">
                   Original URL
