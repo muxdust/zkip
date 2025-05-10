@@ -11,19 +11,19 @@ const DashboardComp = ({
   createLink,
 }) => {
   const [originalUrl, setOriginalUrl] = useState("");
-  const [copiedLinkId, setCopiedLinkId] = useState(null);
+  const [copiedshortKey, setCopiedshortKey] = useState(null);
 
   const handleCreateLink = (e) => {
     e.preventDefault();
     createLink(originalUrl);
   };
 
-  const copyLink = (linkId, shortUrl) => {
+  const copyLink = (shortKey, shortUrl) => {
     navigator.clipboard.writeText(shortUrl);
-    setCopiedLinkId(linkId);
+    setCopiedshortKey(shortKey);
 
     setTimeout(() => {
-      setCopiedLinkId(null);
+      setCopiedshortKey(null);
     }, 2000);
   };
 
@@ -31,7 +31,7 @@ const DashboardComp = ({
     <section className="flex justify-start items-start w-full min-h-screen">
       <div className="flex flex-col justify-start items-start w-full h-full">
         <h2 className="text-3xl font-medium text-zinc-100">Dashboard</h2>
-        <div className="flex flex-col justify-start items-start w-full mt-4 p-4 rounded-lg bg-gradient-to-br from-green-600 to-green-700">
+        <div className="flex flex-col justify-start items-start w-full mt-4 p-4 rounded-lg bg-gradient-to-br from-orange-600 to-orange-700">
           <h3 className="text-2xl font-medium text-zinc-100">{`Welcome! ${name}`}</h3>
           <p className="text-lg text-zinc-200 mt-2">
             Here's a quick overview of your account.
@@ -59,13 +59,13 @@ const DashboardComp = ({
             <input
               type="url"
               placeholder="Paste your link here ....."
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900"
               value={originalUrl}
               onChange={(e) => setOriginalUrl(e.target.value)}
             />
             <button
               onClick={handleCreateLink}
-              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1"
+              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-orange-500 flex items-center justify-center gap-1"
             >
               Shorten <SendHorizontal size={16} className="inline-block" />
             </button>
@@ -100,10 +100,10 @@ const DashboardComp = ({
                       <td className="p-4 text-zinc-300">{link.clicks}</td>
                       <td className="p-4 flex justify-start items-center gap-2 md:gap-5">
                         <button>
-                          {copiedLinkId === link.id ? (
+                          {copiedshortKey === link.id ? (
                             <CopyCheck
                               size={20}
-                              className="inline-block cursor-pointer text-green-500"
+                              className="inline-block cursor-pointer text-orange-500"
                             />
                           ) : (
                             <Copy

@@ -36,7 +36,7 @@ const EverythingYouNeed = () => {
               className="flex flex-col justify-start items-start w-full p-4 rounded-lg bg-zinc-900 gap-2"
               key={item.id}
             >
-              <span className="text-green-500">{item.icon}</span>
+              <span className="text-orange-500">{item.icon}</span>
               <h3 className="text-2xl font-medium text-zinc-100">
                 {item.title}
               </h3>

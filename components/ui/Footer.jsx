@@ -8,7 +8,7 @@ const Footer = () => {
         <span className="text-zinc-400">Made with ❤️ by</span>
         <Link
           href="https://priyanshuchahar.vercel.app"
-          className="underline text-green-500"
+          className="underline text-orange-500"
         >
           <p>Priyanshu</p>
         </Link>

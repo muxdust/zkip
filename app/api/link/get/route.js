@@ -4,10 +4,10 @@ import { LRUCache } from "next/dist/server/lib/lru-cache";
 
 const cache = new LRUCache({ max: 500, maxAge: 1000 * 60 * 60 });
 
-const updateCount = async (linkId) => {
+const updateCount = async (shortKey) => {
   try {
     await dbClient.link.update({
-      where: { linkId },
+      where: { shortKey },
       data: {
         clicks: {
           increment: 1,
@@ -21,21 +21,21 @@ const updateCount = async (linkId) => {
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const linkId = searchParams.get("linkId");
+  const shortKey = searchParams.get("shortKey");
 
-  if (!linkId) {
-    return NextResponse.json({ message: "Missing linkId" }, { status: 400 });
+  if (!shortKey) {
+    return NextResponse.json({ message: "Missing shortKey" }, { status: 400 });
   }
 
-  const cachedLongUrl = cache.get(linkId);
+  const cachedLongUrl = cache.get(shortKey);
   if (cachedLongUrl) {
-    updateCount(linkId);
+    updateCount(shortKey);
     return NextResponse.json({ longUrl: cachedLongUrl }, { status: 200 });
   }
 
   try {
     const link = await dbClient.link.findUnique({
-      where: { linkId },
+      where: { shortKey },
       select: { originalUrl: true },
     });
 
@@ -43,9 +43,9 @@ export async function GET(request) {
       return NextResponse.json({ message: "Not Found" }, { status: 404 });
     }
 
-    cache.set(linkId, link.originalUrl);
+    cache.set(shortKey, link.originalUrl);
 
-    updateCount(linkId);
+    updateCount(shortKey);
 
     return NextResponse.json({ longUrl: link.originalUrl }, { status: 200 });
   } catch (error) {

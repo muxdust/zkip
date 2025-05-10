@@ -25,7 +25,7 @@ const Navbar = () => {
         <ul className="hidden lg:flex items-center space-x-6">
           {["Home", "Contact", "About"].map((item) => (
             <li key={item}>
-              <Link href="/" className="text-zinc-200 hover:text-green-500">
+              <Link href="/" className="text-zinc-200 hover:text-orange-500">
                 {item}
               </Link>
             </li>
@@ -35,14 +35,14 @@ const Navbar = () => {
           {isLogged ? (
             <Link
               href="/dashboard"
-              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-full border border-orange-500 transition"
             >
               Dashboard
             </Link>
           ) : (
             <Link
               href="/login"
-              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+              className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-full border border-orange-500 transition"
             >
               Login
             </Link>
@@ -67,7 +67,7 @@ const Navbar = () => {
               <li key={item}>
                 <Link
                   href="/"
-                  className="text-zinc-200 text-lg hover:text-green-500"
+                  className="text-zinc-200 text-lg hover:text-orange-500"
                   onClick={toggleMenu}
                 >
                   {item}
@@ -78,14 +78,14 @@ const Navbar = () => {
               {isLogged ? (
                 <Link
                   href="/dashboard"
-                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-full border border-orange-500 transition"
                 >
                   Dashboard
                 </Link>
               ) : (
                 <Link
                   href="/login"
-                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-full border border-green-500 transition"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-full border border-orange-500 transition"
                 >
                   Login
                 </Link>

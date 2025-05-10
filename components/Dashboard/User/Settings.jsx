@@ -39,7 +39,7 @@ const Settings = ({
                 <input
                   type="text"
                   placeholder="Name"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                 />
@@ -51,7 +51,7 @@ const Settings = ({
                 <input
                   type="text"
                   placeholder="Username"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
                   value={newUsername}
                   onChange={(e) => setNewUsername(e.target.value)}
                 />
@@ -63,7 +63,7 @@ const Settings = ({
                 <input
                   type="email"
                   placeholder="Email"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                 />
@@ -75,7 +75,7 @@ const Settings = ({
                 <input
                   type="password"
                   placeholder="Password"
-                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900 mt-2"
+                  className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900 mt-2"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
@@ -84,7 +84,7 @@ const Settings = ({
                 <button
                   onClick={handleSave}
                   type="submit"
-                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1"
+                  className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-orange-500 flex items-center justify-center gap-1"
                 >
                   Save <SaveIcon size={16} className="inline-block" />
                 </button>

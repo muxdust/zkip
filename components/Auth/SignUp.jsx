@@ -64,7 +64,7 @@ const SignUp = () => {
               id="name"
               name="name"
               placeholder="Enter your full name"
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -81,7 +81,7 @@ const SignUp = () => {
               id="username"
               name="username"
               placeholder="Choose a username"
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -98,7 +98,7 @@ const SignUp = () => {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-green-500 bg-zinc-900"
+              className="w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 focus:border-orange-500 bg-zinc-900"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -110,7 +110,7 @@ const SignUp = () => {
             >
               Password
             </label>
-            <div className="flex items-center w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 bg-zinc-900 focus-within:border-green-500">
+            <div className="flex items-center w-full rounded-md px-3 py-2 text-zinc-300 outline-none border border-zinc-600 bg-zinc-900 focus-within:border-orange-500">
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
@@ -132,7 +132,7 @@ const SignUp = () => {
           <button
             type="submit"
             onClick={handleSignUp}
-            className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-green-500 to-green-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-green-500 flex items-center justify-center gap-1 mt-2 w-full"
+            className="px-4 py-2 hover:opacity-90 bg-gradient-to-br from-orange-500 to-orange-700 text-zinc-100 rounded-md transition duration-300 ease-in-out cursor-pointer border border-orange-500 flex items-center justify-center gap-1 mt-2 w-full"
           >
             Sign Up
           </button>
@@ -140,7 +140,7 @@ const SignUp = () => {
             <p>Already have an account?</p>
             <Link
               href="/login"
-              className="text-green-500 hover:text-green-700 transition duration-300 ease-in-out cursor-pointer underline"
+              className="text-orange-500 hover:text-orange-700 transition duration-300 ease-in-out cursor-pointer underline"
             >
               Login
             </Link>
