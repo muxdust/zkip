@@ -5,11 +5,13 @@ import axios from "axios";
 
 const page = () => {
   const [error, setError] = useState(null);
-  const { shortKey } = useParams();
+  const { shortkey } = useParams();
+
+  console.log(shortkey);
 
   const fetchOriginalUrl = async () => {
     try {
-      const response = await axios.get(`/api/link/get?shortKey=${shortKey}`);
+      const response = await axios.get(`/api/link/get?shortKey=${shortkey}`);
 
       if (response.status === 200) {
         window.location.replace(response.data.longUrl);
@@ -21,7 +23,7 @@ const page = () => {
 
   useEffect(() => {
     fetchOriginalUrl();
-  }, [shortKey]);
+  }, [shortkey]);
 
   return (
     <p className="text-xl text-center text-zinc-300">
